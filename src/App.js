@@ -1,5 +1,5 @@
 import './App.css';
-
+import Lista from './components/Lista.js'
 
 function App() {
 const clase = {
@@ -7,32 +7,39 @@ const clase = {
   tema : 'Angular'
 }
 
+
+
+ const estilos = {
+   color:'blue',
+   fontSize: 30,
+ }
+
 const autos = [
-  {id: 1, nombre: 'Corsa', marca:'Chevrolet'},
-  {id: 2, nombre: 'Siena', marca:'Fiat'},
-  {id: 3, nombre: 'Ka', marca:'Ford'},
-  {id: 4, nombre: 'Gol', marca:'Volkswagen'},
-  {id: 5, nombre: 'A7', marca:'Audi'}
+  {id: 1, strong: 'Corsa', span:'Chevrolet'},
+  {id: 2, strong: 'Siena', span:'Fiat'},
+  {id: 3, strong: 'Ka', span:'Ford'},
+  {id: 4, strong: 'Gol', span:'Volkswagen'},
+  {id: 5, strong: 'A7', span:'Audi'},
+  {id: 6, strong: 'Sandero', span: 'Renault'}
 ]
 
-const estilos = {
-  color:'blue',
-  fontSize: 30,
-}
+const electrodomésticos = [
+  {id: 1, strong: 'Heladera', span:'Gafa'},
+  {id: 2, strong: 'Secarropas', span:'Kohinoor'},
+  {id: 3, strong: 'Cocina', span:'Escorial'},
+  {id: 4, strong: 'Batidora', span:'Peabody'},
+  {id: 5, strong: 'Aire acondicionado', span:'Lift'}
+]
+
 const esLigth= true;
 
   return (
-    <div className={esLigth ? 'ligth' : 'dark' }>
-        <h2 className={esLigth ? 'ligth-title' : 'dark-title' } >Bienvenidos a la práctica de React {clase.numero}  </h2>
-      <ul>
-          {autos.map(auto => (
-            <li key={auto.id}>
-              <strong>{auto.marca} </strong>
-              <span>{auto.nombre} </span>
-            </li>
-          )) }
-          </ul>
-          <button id='tema' >Cambiar tema</button>
+    <div className={App}>
+        <h2 style={estilos} > Bienvenidos a la clase {clase.numero} de {clase.tema}  </h2>
+          <Lista lista={autos} titulo='Lista de Autos' />
+          <Lista lista={electrodomésticos} titulo='Lista de Electrodomésticos'>
+            <li style={{backgroundColor: 'red'}}>Fin de la lista</li>
+            </Lista>
     </div>
   );
 }
