@@ -1,43 +1,12 @@
 body{
-  font-family: 'roboto', 'sans serif';
+  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
-:root{
-  --light-main:white;
-  --ligth-title:orange;
-  --ligth-font:black;
-  --dark-main:black;
-  --dark-title:red;
-  --dark-font:orange;
-}
-.App {
+
+.App{
   text-align: center;
-  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
-.dark{
-  background-color: var(--dark-main);
-  color: var(--dark-font);
-}
-
-.ligth{
-background-color: var(--light-main);
-color: var(--ligth-font);
-}
-.dark-title{
-    color: var(--dark-title);
-}
-
-.ligth-title{
-color: var(--ligth-title);
+h2 {
+  color:red;
 }
