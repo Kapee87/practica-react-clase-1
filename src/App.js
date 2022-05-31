@@ -2,7 +2,7 @@ import './App.css';
 import Lista from './components/Lista'
 
 
-// import Contador from './components/contador'
+ import Contador from './components/contador'
 
 
 
@@ -13,9 +13,9 @@ function App() {
     <div>
       
 
-      <Lista />
+      {/* <Lista /> */}
       
-      {/* <Contador /> */}
+      <Contador />
     </div>
     );
 }

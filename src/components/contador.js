@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Contador = () => {
 
     const[contador, setContador]= useState(0);
+    // const[clicks, setClicks]= useEffect(0);
 
     const sumar = () => setContador(valorActual => valorActual +1);
     const restar = () => setContador(prevState => prevState -1);
     const reiniciar = () => setContador(0);
 
+    
+    // useEffect(() =>{
+    //     if (contador === 0) return;
+    //   setClicks(valorActual => valorActual +1);
+    // }, [contador])
 return (
     
     <>
+        
+        <div>Contador</div>
 
-        <div>Hola</div>
+
+    {/* <h3>Usted ha clickeado {clicks} veces</h3> */}
         <div style={{display:"flex"}}>
 
             <button onClick={sumar}> + </button>
