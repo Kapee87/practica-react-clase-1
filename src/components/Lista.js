@@ -1,38 +1,48 @@
-import { useState } from "react";
-import ListItem from "./ListItem";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-const electrodomesticosData = [
-   {id: 1, strong: 'Heladera', span:'Gafa'},
-   {id: 2, strong: 'Secarropas', span:'Kohinoor'},
-   {id: 3, strong: 'Cocina', span:'Escorial'},
-   {id: 4, strong: 'Batidora', span:'Peabody'},
-   {id: 5, strong: 'Aire acondicionado', span:'Lift'}
- ]
-
-function Lista(){
+const Lista = () =>{
   
-  const [electrodomesticos, setElectrodomesticos]=useState(electrodomesticosData);
+const [data, setData]=useState([]);
+const [error, setError]=useState({
+    isError:false,
+    message: '',
+  });
 
-  function eliminarItem(itemAEliminar){
-    const listaActualizada = electrodomesticos.filter(item => item.id !== itemAEliminar);
-    setElectrodomesticos(listaActualizada);
-  }
-  
-    return(
-        <ul>
-          <li><h3>Lista de Electrodomésticos </h3> </li>
-          {/* versión de bajo perfomance con index */}
-          {electrodomesticos.map((item, index) => (
-            <ListItem key={index} contenido={item} eliminar={eliminarItem} />
-          )) }
-          {/* versión mejorada con id unico */}
-          {electrodomesticos.map(item => (
-            <ListItem key={item.id} contenido={item} eliminar={eliminarItem} />
-          ))}
+const[isLoading, setIsloading] = useState(false);
 
-          {/* { children } */}
-          </ul>
-    )
-}
+const [botonActualizador, setBotonActualizador] = useState(false);
+
+    useEffect(() =>{
+        axios("https://jsonplaceholder.typicode.com/users")
+          .then(res => setData(res.data))
+          .catch(err => setError({
+            isError: true,
+            message: err.message,
+        }))
+          .finally(()=>{
+            setTimeout(()=>{
+            setIsloading(false)
+          }, 1000)
+        })
+    }, [botonActualizador])
+
+    return (
+
+     <>
+
+      <button onClick={()=> setBotonActualizador(!botonActualizador)}>botonActualizador<button/>
+       <ul>
+       {
+         error.isError ? <h4 style={{color:red}}>Error: {error.message</h4>
+        isLoading ? <h4> cargando... </h4> : 
+         data.length !== 0 &&
+         data.map(item =>
+          <li>{item.name}---{item.mail} </li>
+         ))
+     </ul>
+     </>
+    );
+} 
 
 export default Lista;
